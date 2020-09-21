@@ -2,9 +2,12 @@
 use 5.010;
 use Text::Balanced qw(extract_bracketed);
 
-# first arg is the board to generate. must be in the %boards map.
+# Set the board to generate. must be in the %boards map.
 $board = 'redox_w';
 $board = 'crkbd';
+
+# keymap dir in which to place he output
+$yourKmDirName = "git-rz";
 
 # Maps the Corne LEDs in the order of the wires, to the Ergodox LED numbering.
 # The actual led numbers on the corne snake around the back then up and down the front moving from inside to outside..
@@ -14,7 +17,7 @@ $board = 'crkbd';
 
 %boards = (
   crkbd => {
-    keymap => "git-rz",
+    keymap => "$yourKmDirName",
     leds => [
       24, 24, 24, 25, 25, 25,
 
@@ -34,18 +37,18 @@ $board = 'crkbd';
       14, 15, 16, 17, 18, 19,                         22, 23, 24, 25, 26, 27,
       28, 29, 30, 31, 32, 33,                         34, 35, 36, 37, 38, 39,
       40, 41, 42, 43, 44, 45,                         48, 49, 50, 51, 52, 53,
-                    58,  70,  71,                  74,  75,  59
+                    58,  71,  70,                  75,  74,  59
     ]
   },
   redox_w => {
-    keymap => "git-rz",
+    keymap => "$yourKmDirName",
     leds => "nope",
     keylookup => [
       0,  1,  2,  3,  4,  5,                           8,  9, 10, 11, 12, 13,
       14, 15, 16, 17, 18, 19,          20, 21,        22, 23, 24, 25, 26, 27,
       28, 29, 30, 31, 32, 33,          46, 47,        34, 35, 36, 37, 38, 39,
       40, 41, 42, 43, 44, 45,      68, 72, 69, 73,    48, 49, 50, 51, 52, 53,
-      54, 55, 56, 57,    57,       58, 70, 75, 59,      60,   60, 61, 62, 63
+      54, 55, 56, 57,    58,       70, 71, 74, 75,      59,   60, 61, 62, 63
     ]
   }
 );
@@ -117,7 +120,7 @@ while (<>) {
       $layer .= $_;
     }
   }
-  
+
   if ($ledfound && $hasleds) {
     if (m/^ *\[(\d+)\] = \{(.*)\}.*/) {
       $cap = $2;
@@ -131,7 +134,9 @@ while (<>) {
   }
 }
 
-open(KH, '>', "$ENV{'QMK_HOME'}/keyboards/$board/keymaps/$boards{$board}->{keymap}/ergo2qmk.h") or die $!;
+$out = "$ENV{'QMK_HOME'}/keyboards/$board/keymaps/$boards{$board}->{keymap}/ergo2qmk.h";
+say "Writing $out";
+open(KH, '>', "$out") or die $!;
 print KH "$enum};\n$pru\n}\n\n";
 print KH "$keymaps};\n\n";
 print KH "$ledmaps};\n" if $hasleds;
