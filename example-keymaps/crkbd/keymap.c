@@ -64,11 +64,18 @@ void rgb_matrix_indicators_user(void) {
   uint8_t layer = biton32(layer_state);
   uint8_t leds = host_keyboard_leds();
 
+  /* 
+   * // This is for setting an alternate color scheme when numlock is not engaged.
+   * // Uncomment if you manually added an extra layer to your led map array.
+   * // The alternate colors only work on the hand where the usb is plugged in.
+   * // This is why this example code has the right hand master.
+   *
   if (layer == 3) {
     if (!(leds & (1 << USB_LED_NUM_LOCK))) {
       layer = 8;
     }
   }
+  */
   set_layer_color(layer);
 }
 
