@@ -5,6 +5,7 @@ use Text::Balanced qw(extract_bracketed);
 # Set the board to generate. must be in the %boards map.
 $board = 'redox_w';
 $board = 'crkbd';
+$board = 'handwired/dactyl_manuform/5x6';
 
 # keymap dir in which to place he output
 $yourKmDirName = "git-rz";
@@ -49,6 +50,20 @@ $yourKmDirName = "git-rz";
       28, 29, 30, 31, 32, 33,          46, 47,        34, 35, 36, 37, 38, 39,
       40, 41, 42, 43, 44, 45,      68, 72, 69, 73,    48, 49, 50, 51, 52, 53,
       54, 55, 56, 57,    58,       70, 71, 74, 75,      59,   60, 61, 62, 63
+    ]
+  },
+  "handwired/dactyl_manuform/5x6" => {
+    keymap => "$yourKmDirName",
+    leds => "nope",
+    keylookup => [
+      0,  1,  2,  3,  4,  5,                           8,  9, 10, 11, 12, 13,
+      14, 15, 16, 17, 18, 19,                         22, 23, 24, 25, 26, 27,
+      28, 29, 30, 31, 32, 33,                         34, 35, 36, 37, 38, 39,
+      40, 41, 42, 43, 44, 45,                         48, 49, 50, 51, 52, 53,
+              56, 57,                                         60, 61,
+                       71, 70,                     75, 74,
+                       58, 68,                     69, 59,
+                       65, 72,                     73, 66
     ]
   }
 );

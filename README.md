@@ -1,6 +1,6 @@
 # Ergo2qmk
 
-Converts source code experted from [Oryx (the Ergodox-EZ configurator)](https://configure.ergodox-ez.com/ergodox-ez/layouts/ABaJR/latest/3) such that it can be used for the Corne and Redox.
+Converts source code experted from [Oryx (the Ergodox-EZ configurator)](https://configure.ergodox-ez.com/ergodox-ez/layouts/ABaJR/latest/3) such that it can be used for the Corne, Redox wireless, and the dactyl manuform.
 
 This includes the following features:
 - Key map
@@ -13,7 +13,7 @@ This includes the following features:
 2. Use at least one per-key RGB value per layer. Nothing else has been tested. Corne only.
 2. Download the source for your map and extract keymap.c
 2. Edit ergo2qmk.pl, following the instructions therein. Notably, set the variables `board` and `yourKmDirName`.
-2. Ensure QMK_HOME is exported in your environment.
+2. Ensure `QMK_HOME` is exported in your environment.
 2. #include "ergo2qmk.h" in your keymap.c, for redox, or:
 2. Copy all my keymap files from the example directory for Corne. You can modify them later, but mine will take care of setting the proper lights on layer switch.
 2. Run `ergo2qmk.pl < ergodox-source/keymap.c` to create ergo2qmk.h in your keymap dir.
@@ -117,5 +117,17 @@ The following diagrams are useful if you want to alter the mapping in the script
       "26", "27", "28", "29", "30", "31",          "32", "33",          "34", "35", "36", "37", "38", "39",
       "40", "41", "42", "43", "44", "45",    "46", "47", "48", "49",    "50", "51", "52", "53", "54", "55",
       "56", "57", "58", "59",    "60",       "61", "62", "63", "64",       "65",    "66", "67", "68", "69"
+
+```
+### Manuform 5x6:
+```
+       "0",  "1",  "2",  "3",  "4",  "5",                                "6",  "7",  "8",  "9", "10", "11",
+      "12", "13", "14", "15", "16", "17",                               "18", "19", "20", "21", "22", "23",
+      "24", "25", "26", "27", "28", "29",                               "30", "31", "32", "33", "34", "35",
+      "36", "37", "38", "39", "40", "41",                               "42", "43", "44", "45", "46", "47",
+                  "48", "49",                                                       "50", "51",
+                                  "52", "53",                        "54", "55",
+                                    "56", "57",                     "58", "59",
+                                    "60", "61",                     "62", "63"
 
 ```
